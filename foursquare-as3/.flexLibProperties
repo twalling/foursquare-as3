@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties version="1">
+  <includeClasses>
+    <classEntry path="com.timwalling.foursquare.FoursquareService"/>
+    <classEntry path="com.timwalling.foursquare.FoursquareRequestFormat"/>
+    <classEntry path="com.timwalling.foursquare.FoursquareOperation"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>
