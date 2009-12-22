@@ -34,7 +34,7 @@ package com.timwalling.foursquare
         /**
          * URL prefix to use for REST calls.
          */
-        public var url:String = "http://api.foursquare.com/v1/";
+        public var url:String = "http://api.foursquare.com/v1";
         
         /**
          * The request format. <code>FoursquareRequestFormat.XML</code> or <code>FoursquareRequestFormat.JSON</code>.
@@ -60,7 +60,7 @@ package com.timwalling.foursquare
          */
         public function getAuthToken(username:String, password:String):FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "authexchange", {fs_username:username, fs_password:password});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/authexchange", {fs_username:username, fs_password:password});
             operation.timeout = timeout;
             operation.method = URLRequestMethod.POST;
             return operation;
@@ -73,7 +73,7 @@ package com.timwalling.foursquare
          */
         public function getCities():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "cities" + format);
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/cities" + format);
             operation.timeout = timeout;
             return operation;
         }
@@ -86,7 +86,7 @@ package com.timwalling.foursquare
          */
         public function checkCity(geolat:String, geolong:String):FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "checkcity" + format, {geolat:geolat, geolong:geolong});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/checkcity" + format, {geolat:geolat, geolong:geolong});
             operation.timeout = timeout;
             return operation;
         }
@@ -98,7 +98,7 @@ package com.timwalling.foursquare
          */
         public function switchCity(cityid:String):FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "switchcity" + format, {cityid:cityid});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/switchcity" + format, {cityid:cityid});
             operation.timeout = timeout;
             operation.method = URLRequestMethod.POST;
             operation.requiresAuth = true;
@@ -116,7 +116,7 @@ package com.timwalling.foursquare
          */
         public function getCheckins(geolat:String = "", geolong:String = "", cityid:String = ""):FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "checkins" + format, {geolat:geolat, geolong:geolong, cityid:cityid});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/checkins" + format, {geolat:geolat, geolong:geolong, cityid:cityid});
             operation.timeout = timeout;
             operation.requiresAuth = true;
             return operation;
@@ -136,7 +136,7 @@ package com.timwalling.foursquare
          */
         public function checkin(geolat:String = "", geolong:String = "", vid:String = "", venue:String = "", shout:String = "", secret:String = "", twitter:String = "", facebook:String = ""):FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "checkin" + format, {geolat:geolat, geolong:geolong, vid:vid, venue:venue, shout:shout, "private":secret, twitter:twitter, facebook:facebook});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/checkin" + format, {geolat:geolat, geolong:geolong, vid:vid, venue:venue, shout:shout, "private":secret, twitter:twitter, facebook:facebook});
             operation.timeout = timeout;
             operation.method = URLRequestMethod.POST;
             operation.requiresAuth = true;
@@ -151,7 +151,7 @@ package com.timwalling.foursquare
          */
         public function getHistory(limit:Number = 20, sinceid:String = ""):FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "history" + format, {l:limit, sinceid:sinceid});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/history" + format, {l:limit, sinceid:sinceid});
             operation.timeout = timeout;
             operation.requiresAuth = true;
             return operation;
@@ -164,7 +164,7 @@ package com.timwalling.foursquare
          */
         public function getUserDetails():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "user" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/user" + format, {});
             operation.timeout = timeout;
             operation.requiresAuth = true;
             return operation;
@@ -175,7 +175,7 @@ package com.timwalling.foursquare
          */
         public function getFriends():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "friends" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/friends" + format, {});
             operation.timeout = timeout;
             operation.requiresAuth = true;
             return operation;
@@ -193,7 +193,7 @@ package com.timwalling.foursquare
          */
         public function findVenues(geolat:String, geolong:String, limit:int = 10, keyword:String = ""):FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "venues" + format, {geolat:geolat, geolong:geolong, l:limit, q:keyword});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/venues" + format, {geolat:geolat, geolong:geolong, l:limit, q:keyword});
             operation.timeout = timeout;
             return operation;
         }
@@ -205,7 +205,7 @@ package com.timwalling.foursquare
          */
         public function getVenueDetails(vid:String):FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "venue" + format, {vid:vid});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/venue" + format, {vid:vid});
             operation.timeout = timeout;
             return operation;
         }
@@ -215,7 +215,7 @@ package com.timwalling.foursquare
          */
         public function addVenue():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "addvenue" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/addvenue" + format, {});
             operation.timeout = timeout;
             operation.method = URLRequestMethod.POST;
             operation.requiresAuth = true;
@@ -227,7 +227,7 @@ package com.timwalling.foursquare
          */
         public function proposeVenueEdit():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "venue/proposeedit" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/venue/proposeedit" + format, {});
             operation.timeout = timeout;
             operation.method = URLRequestMethod.POST;
             operation.requiresAuth = true;
@@ -239,7 +239,7 @@ package com.timwalling.foursquare
          */
         public function flagVenueClosed():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "venue/flagclosed" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/venue/flagclosed" + format, {});
             operation.timeout = timeout;
             operation.method = URLRequestMethod.POST;
             operation.requiresAuth = true;
@@ -257,7 +257,7 @@ package com.timwalling.foursquare
          */
         public function findTips(geolat:String, geolong:String, limit:int = 30):FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "tips" + format, {geolat:geolat, geolong:geolong, l:limit});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/tips" + format, {geolat:geolat, geolong:geolong, l:limit});
             operation.timeout = timeout;
             return operation;
         }
@@ -267,7 +267,7 @@ package com.timwalling.foursquare
          */
         public function addTip():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "addtip" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/addtip" + format, {});
             operation.timeout = timeout;
             operation.method = URLRequestMethod.POST;
             operation.requiresAuth = true;
@@ -279,7 +279,7 @@ package com.timwalling.foursquare
          */
         public function markTipAsToDo():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "tip/marktodo" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/tip/marktodo" + format, {});
             operation.timeout = timeout;
             operation.method = URLRequestMethod.POST;
             operation.requiresAuth = true;
@@ -291,7 +291,7 @@ package com.timwalling.foursquare
          */
         public function markTipAsDone():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "tip/markdone" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/tip/markdone" + format, {});
             operation.timeout = timeout;
             operation.method = URLRequestMethod.POST;
             operation.requiresAuth = true;
@@ -305,7 +305,7 @@ package com.timwalling.foursquare
          */
         public function getFriendRequests():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "friend/requests" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/friend/requests" + format, {});
             operation.timeout = timeout;
             operation.requiresAuth = true;
             return operation;
@@ -316,7 +316,7 @@ package com.timwalling.foursquare
          */
         public function approveFriendRequest():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "friend/approve" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/friend/approve" + format, {});
             operation.timeout = timeout;
             operation.method = URLRequestMethod.POST;
             operation.requiresAuth = true;
@@ -328,7 +328,7 @@ package com.timwalling.foursquare
          */
         public function denyFriendRequest():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "friend/deny" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/friend/deny" + format, {});
             operation.timeout = timeout;
             operation.method = URLRequestMethod.POST;
             operation.requiresAuth = true;
@@ -340,7 +340,7 @@ package com.timwalling.foursquare
          */
         public function sendFriendRequest():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "friend/sendrequest" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/friend/sendrequest" + format, {});
             operation.timeout = timeout;
             operation.method = URLRequestMethod.POST;
             operation.requiresAuth = true;
@@ -352,7 +352,7 @@ package com.timwalling.foursquare
          */
         public function findFriendsByName():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "findfriends/byname" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/findfriends/byname" + format, {});
             operation.timeout = timeout;
             operation.requiresAuth = true;
             return operation;
@@ -363,7 +363,7 @@ package com.timwalling.foursquare
          */
         public function findFriendsByPhone():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "findfriends/byphone" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/findfriends/byphone" + format, {});
             operation.timeout = timeout;
             operation.requiresAuth = true;
             return operation;
@@ -374,7 +374,7 @@ package com.timwalling.foursquare
          */
         public function findFriendsByTwitter():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "findfriends/bytwitter" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/findfriends/bytwitter" + format, {});
             operation.timeout = timeout;
             operation.requiresAuth = true;
             return operation;
@@ -387,7 +387,7 @@ package com.timwalling.foursquare
          */
         public function setPings():FoursquareOperation
         {
-            var operation:FoursquareOperation = new FoursquareOperation(url + "settings/setpings" + format, {});
+            var operation:FoursquareOperation = new FoursquareOperation(url + "/settings/setpings" + format, {});
             operation.timeout = timeout;
             operation.method = URLRequestMethod.POST;
             operation.requiresAuth = true;
