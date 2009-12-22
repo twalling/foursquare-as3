@@ -152,7 +152,7 @@ package com.timwalling.foursquare
          */
         private function handleLoaderError(event:ErrorEvent):void
         {
-            _tim.stop();
+            stopTimer();
             removeLoaderEventListeners();
             handleError(new ErrorEvent(ErrorEvent.ERROR, false, false, event.text));
         }
@@ -162,7 +162,7 @@ package com.timwalling.foursquare
          */
         private function handleLoaderComplete(event:Event):void
         {
-            _tim.stop();
+            stopTimer();
             _data = _loader.data;
             removeLoaderEventListeners();
             handleComplete(event);
@@ -176,6 +176,17 @@ package com.timwalling.foursquare
             _loader.removeEventListener(Event.COMPLETE, handleLoaderComplete);
             _loader.removeEventListener(IOErrorEvent.IO_ERROR, handleLoaderError);
             _loader.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, handleLoaderError);
+        }
+        
+        /**
+         * @private
+         */
+        private function stopTimer():void
+        {
+            if (_tim)
+            {
+                _tim.stop();
+            }
         }
         
         /**
