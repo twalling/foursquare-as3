@@ -110,6 +110,7 @@ package com.timwalling.foursquare
             var request:URLRequest = new URLRequest(url);
             request.method = method;
             
+            var isVarsEmpty:Boolean = true;
             var vars:URLVariables;
             if (params)
             {
@@ -118,9 +119,20 @@ package com.timwalling.foursquare
                 {
                     if (params[prop] != "" && params[prop] != null)
                     {
+                    	isVarsEmpty = false;
                         vars[prop] = params[prop];
                     }
                 }
+                request.data = vars;
+            }
+            
+            // this is used to ensure that the request method remains
+            // a POST, if there are no variables to post then Flash
+            // automatically changes the request to a GET
+            if (request.method == URLRequestMethod.POST && isVarsEmpty)
+            {
+                vars = new URLVariables();
+                vars.dummy = "";
                 request.data = vars;
             }
             
